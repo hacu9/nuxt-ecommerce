@@ -29,44 +29,27 @@ const AUTH = {
 // this.$auth.loginWith('laravel.passport')
 
 const I18N = {
-  //   locales: [
-  //     {
-  //       code: "en",
-  //       iso: "en-US",
-  //       name: "English"
-  //     },
-  //     {
-  //       code: "fr",
-  //       iso: "fr-FR",
-  //       name: "Français"
-  //     },
-  //     {
-  //       code: "es",
-  //       iso: "es-ES",
-  //       name: "Español"
-  //     }
-  //   ],
   defaultLocale: "en",
   locales: [
     {
       code: "es",
       iso: "es-ES",
       name: "Español",
-      langFile: "es-ES.js",
+      // langFile: "es-ES.js",
       file: "es-ES.js"
     },
     {
       code: "en",
       iso: "en-US",
       name: "English",
-      langFile: "en-US.js",
+      // langFile: "en-US.js",
       file: "en-US.js"
     },
     {
       code: "fr",
       iso: "fr-FR",
       name: "Francais",
-      langFile: "fr-FR.js",
+      // langFile: "fr-FR.js",
       file: "fr-FR.js"
     }
   ],

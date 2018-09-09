@@ -15,6 +15,17 @@ const createStore = () => {
         this.state.auth_message = message;
       }
     },
+    getters: {
+      loggedIn(state) {
+        return state.auth.loggedIn;
+      },
+      user(state) {
+        return state.auth.user;
+      },
+      userAvatar(state) {
+        // return `/public/avatars/avatar-${state.auth.user.id}.png`;
+      }
+    },
     actions: {
       signup({ commit, state }, payload) {
         this.$axios

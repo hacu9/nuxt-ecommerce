@@ -1,8 +1,30 @@
 export default {
-  home: "Homepage",
-  posts: "Posts",
-  about: "About us",
-  homepage: {
-    subtitle: "nuxt-i18n demo"
+  home: {
+    name: "Home"
+  },
+
+  contact: {
+    name: "Contact"
+  },
+
+  pricing: {
+    name: "Pricing"
+  },
+
+  about: {
+    name: "About us"
+  },
+
+  auth: {
+    login: "Login",
+    profile: "Profile",
+    dashboard: "dashboard"
+  },
+
+  store: {
+    name: "Store",
+    women: "Women",
+    categories: "Categories",
+    men: "Men"
   }
 };

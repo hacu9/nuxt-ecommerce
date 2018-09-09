@@ -27,23 +27,17 @@ module.exports = {
   ],
   css: [
     "./node_modules/bootstrap/dist/css/bootstrap.css",
+    "./node_modules/element-ui/lib/theme-chalk/index.css",
     "~/assets/sass/now-ui-kit.scss",
-    "~/assets/sass/demo.scss"
+    "~/assets/sass/demo.scss",
+    "~/assets/sass/custom.scss"
   ],
   plugins: [
-    "~plugins/nossr.js",
-    "~plugins/mixins/user.js",
-    {
-      src: "~/plugins/globalDirectives.js",
-      ssr: false
-    },
-    {
-      src: "~/plugins/globalComponents.js"
-      // ssr: false
-    },
-    {
-      src: "~/plugins/now-ui-kit.js"
-    }
+    { src: "~plugins/nossr.js", ssr: false },
+    "~plugins/globalDirectives.js",
+    "~plugins/globalMixins.js",
+    "~plugins/globalComponents.js",
+    { src: "~/plugins/now-ui-kit.js" }
   ],
 
   build: {

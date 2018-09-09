@@ -1,119 +1,69 @@
 <template>
-    <navbar position="fixed"
-            :transparent="transparent"
-            :color-on-scroll="colorOnScroll"
-            menu-classes="ml-auto">
+    <navbar position="fixed" :transparent="transparent" :color-on-scroll="colorOnScroll" menu-classes="ml-auto">
         <template slot-scope="{toggle, isToggled}">
-                <router-link v-popover:popover1 class="navbar-brand" to="/presentation">
-                    Now Ui Kit Pro
-                </router-link>
-                <el-popover
-                        ref="popover1"
-                        popper-class="popover"
-                        placement="bottom"
-                        width="200"
-                        trigger="hover">
-                    <div class="popover-body">Designed by Invision. Coded by Creative Tim</div>
-                </el-popover>
+            <nuxt-link v-popover:popover1 class="navbar-brand" :to="localePath('index')">
+                B de Brand
+            </nuxt-link>
+            <el-popover ref="popover1" popper-class="popover" placement="bottom" width="200" trigger="hover">
+                <div class="popover-body">Designed by Invision. Coded by Creative Tim</div>
+            </el-popover>
         </template>
         <template slot="navbar-menu">
-            
+
             <li class="nav-item">
-            <nuxt-link class="nav-link" :to="localePath('index')">{{ $t('home') }}</nuxt-link>
-                </li> 
-
-                 <li class="nav-item">
-            <nuxt-link class="nav-link" :to="localePath('landing')">{{ $t('about') }}</nuxt-link>
-                </li>  
-
-                 <li class="nav-item">
-            <nuxt-link class="nav-link" :to="localePath('login')">{{ $t('homepage.subtitle') }}</nuxt-link>
-                </li>  
-                  <li class="nav-item">
-            <nuxt-link class="nav-link" :to="localePath('signup')">{{ $t('homepage.subtitle') }}</nuxt-link>
-                </li> 
-
-            <drop-down tag="li" title="Idk" icon="now-ui-icons flag" class="nav-item">
-                <nuxt-link class="nav-link" :to="switchLocalePath('en')">English</nuxt-link>
-                <nuxt-link class="nav-link" :to="switchLocalePath('es')">Espanol</nuxt-link>
-                <nuxt-link class="nav-link" :to="switchLocalePath('fr')">Français</nuxt-link>
-            </drop-down>
-            <drop-down tag="li" title="Components" icon="now-ui-icons design_app" class="nav-item">
-                <nav-link to="/components">
-                    <i class="now-ui-icons business_chart-pie-36"></i> Components
-                </nav-link>
-                <a href="https://demos.creative-tim.com/vue-now-ui-kit-pro/documentation" target="_blank" class="dropdown-item">
-                    <i class="now-ui-icons design_bullet-list-67"></i> Documentation
-                </a>
-            </drop-down>
-            <drop-down tag="li" title="sections" icon="now-ui-icons files_paper" class="nav-item">
-                <nav-link class="dropdown-item" to="/sections#headers">
-                    <i class="now-ui-icons shopping_box"></i> Headers
-                </nav-link>
-                <nav-link class="dropdown-item" to="/sections#features">
-                    <i class="now-ui-icons ui-2_settings-90"></i> Features
-                </nav-link>
-                <nav-link class="dropdown-item" to="/sections#blogs">
-                    <i class="now-ui-icons text_align-left"></i> Blogs
-                </nav-link>
-                <nav-link class="dropdown-item" to="/sections#teams">
-                    <i class="now-ui-icons sport_user-run"></i> Teams
-                </nav-link>
-                <nav-link class="dropdown-item" to="/sections#projects">
-                    <i class="now-ui-icons education_paper"></i> Projects
-                </nav-link>
-                <nav-link class="dropdown-item" to="/sections#pricing">
-                    <i class="now-ui-icons business_money-coins"></i> Pricing
-                </nav-link>
-                <nav-link class="dropdown-item" to="/sections#testimonials">
-                    <i class="now-ui-icons ui-2_chat-round"></i> Testimonials
-                </nav-link>
-                <nav-link class="dropdown-item" to="/sections#contactus">
-                    <i class="now-ui-icons tech_mobile"></i> Contact Us
-                </nav-link>
-            </drop-down>
-
-            <drop-down tag="li" title="Examples" icon="now-ui-icons design_image" class="nav-item">
-                <nav-link to="/about">
-                    <i class="now-ui-icons business_bulb-63"></i> About-us
-                </nav-link>
-                <nav-link to="/blog-post">
-                    <i class="now-ui-icons text_align-left"></i> Blog Post
-                </nav-link>
-                <nav-link class="dropdown-item" to="/blog-posts">
-                    <i class="now-ui-icons design_bullet-list-67"></i> Blog Posts
-                </nav-link>
-                <nav-link class="dropdown-item" to="/contact">
-                    <i class="now-ui-icons location_pin"></i> Contact Us
-                </nav-link>
-                <nav-link class="dropdown-item" to="/landing">
-                    <i class="now-ui-icons education_paper"></i> Landing Page
-                </nav-link>
-                <nav-link class="dropdown-item" to="/login">
-                    <i class="now-ui-icons users_circle-08"></i> Login Page
-                </nav-link>
-                <nav-link class="dropdown-item" to="/pricing">
-                    <i class="now-ui-icons business_money-coins"></i> Pricing
-                </nav-link>
-                <nav-link class="dropdown-item" to="/ecommerce">
-                    <i class="now-ui-icons shopping_shop"></i> Ecommerce Page
-                </nav-link>
-                <nav-link class="dropdown-item" to="/product">
-                    <i class="now-ui-icons shopping_bag-16"></i> Product Page
-                </nav-link>
-                <nav-link class="dropdown-item" to="/profile">
-                    <i class="now-ui-icons users_single-02"></i> Profile Page
-                </nav-link>
-                <nav-link class="dropdown-item" to="/signup">
-                    <i class="now-ui-icons tech_mobile"></i> Signup Page
-                </nav-link>
-            </drop-down>
-            <li class="nav-item">
-                <a class="nav-link btn btn-primary"
-                   href="https://www.creative-tim.com/product/vue-now-ui-kit-pro" target="_blank">
-                    <p>Buy Now</p>
-                </a>
+                <nuxt-link class="nav-link" :to="localePath('about')">{{ $t('about.name') }}</nuxt-link>
             </li>
+
+            <drop-down tag="li" :title="$t('store.name')" icon="now-ui-icons design_app" class="nav-item">
+
+                <nuxt-link class="dropdown-item" :to="localePath('store')">
+                    <i class="now-ui-icons shopping_box"></i> {{ $t('store.women') }}
+                </nuxt-link>
+
+                <nuxt-link class="dropdown-item" :to="localePath('signup')">
+                    <i class="now-ui-icons shopping_box"></i> {{ $t('store.men') }}
+                </nuxt-link>
+
+            </drop-down>
+
+            <li class="nav-item">
+                <nuxt-link class="nav-link" :to="localePath('signup')">{{ $t('pricing.name') }}</nuxt-link>
+            </li>
+
+            <li class="nav-item">
+                <nuxt-link class="nav-link" :to="localePath('contact')">{{ $t('contact.name') }}</nuxt-link>
+            </li>
+
+            <drop-down tag="li" v-if="loggedIn" class="nav-item">
+                <template slot="title">
+                    <a class="dropdown-toggle nav-link" :class="{'no-caret': hideArrow}" data-toggle="dropdown">
+                        <i :class="icon"></i>
+                        <span class="no-icon"><img alt="Avatar" class="avatar img-raised" :src="require(`~/../shared/avatars/${user.avatar}`)"></span>
+                    </a>
+                </template>
+
+                <nuxt-link class="dropdown-item" :to="localePath('profile')">
+                    <i class="now-ui-icons shopping_box"></i> {{ $t('auth.profile') }}
+                </nuxt-link>
+
+                <nuxt-link class="dropdown-item" :to="localePath('dashboard')">
+                    <i class="now-ui-icons shopping_box"></i> {{ $t('auth.dashboard') }}
+                </nuxt-link>
+
+                <a @click="logout()" href="#" class="dropdown-item">Log Out </a>
+            </drop-down>
+
+            <li class="nav-item" v-if="!loggedIn">
+                <nuxt-link class="nav-link btn btn-primary" :to="localePath('signup')">
+                    <i class="now-ui-icons shopping_box"></i> {{ $t('auth.login') }}
+                </nuxt-link>
+            </li>
+
+            <drop-down tag="li" :title="$store.state.i18n.locale" icon="now-ui-icons flag" class="nav-item text-right">
+                <nuxt-link v-for="lang in $i18n.locales" :key="lang.code" class="dropdown-item" :to="switchLocalePath(lang.code)">
+                    <img :src="require(`~/../shared/flags/${lang.iso.split('-')[1]}.png`)" class="avatar" alt=""> {{lang.name}}
+                </nuxt-link>
+            </drop-down>
 
         </template>
     </navbar>
@@ -139,6 +89,11 @@ export default {
     NavbarToggleButton,
     NavLink,
     [Popover.name]: Popover
+  },
+  methods: {
+    logout() {
+      this.$auth.logout();
+    }
   }
 };
 </script>

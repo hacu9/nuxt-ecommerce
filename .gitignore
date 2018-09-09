@@ -12,4 +12,6 @@ dist
 
 assets
 
+static/img
+
 components/now-ui-kit

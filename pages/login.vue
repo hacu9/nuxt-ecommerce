@@ -1,57 +1,56 @@
 <template>
-    <div class="container top">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Login</div>
-                    <div class="card-body">
-                        <form @submit.prevent="addUser">
-                            <div class="form-group row">
-                                <label for="email" class="col-sm-4 col-form-label text-md-right">Email</label>
-                                <div class="col-md-6">
-                                    <input type="email" v-model="userForm.email" class="form-control" required autofocus>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong></strong>
-                                        </span>
-                                </div>
-                            </div>
+    <div class="page-header header-filter login-page" filter-color="orange">
+        <div class="page-header-image"
+             style="background-image: url('img/login.jpg')">
+        </div>
+        <div class="content">
+            <div class="container">
+                <div class="col-md-5 ml-auto mr-auto">
+                    <card type="login" plain>
+                        <div slot="header" class="logo-container">
+                            <img v-lazy="'img/now-logo.png'" alt="">
+                        </div>
 
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 
-                                <div class="col-md-6">
-                                    <input type="password" v-model="userForm.password" class="form-control" required>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong></strong>
-                                        </span>
-                                </div>
-                            </div>
+                        <fg-input class="no-border input-lg"
+                                  addon-left-icon="now-ui-icons users_circle-08"
+                                  placeholder="First Name...">
+                        </fg-input>
 
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Login
-                                    </button>
-                                </div>
+                        <fg-input class="no-border input-lg"
+                                  addon-left-icon="now-ui-icons text_caps-small"
+                                  placeholder="Last Name...">
+                        </fg-input>
+
+                        <template slot="raw-content">
+                            <div class="card-footer text-center">
+                                <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Get Started</a>
                             </div>
-                        </form>
-                    </div>
+                            <div class="pull-left">
+                                <h6>
+                                    <a href="#pablo" class="link footer-link">Create Account</a>
+                                </h6>
+                            </div>
+                            <div class="pull-right">
+                                <h6>
+                                    <a href="#pablo" class="link footer-link">Need Help?</a>
+                                </h6>
+                            </div>
+                        </template>
+                    </card>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
 <script>
+import { Card, Button, FormGroupInput } from "@/components/now-ui-kit";
 export default {
-  name: "login",
-  data() {
-    return {
-      userForm: {
-        email: "",
-        password: ""
-      }
-    };
+  name: "login-page",
+  components: {
+    Card,
+    [Button.name]: Button,
+    [FormGroupInput.name]: FormGroupInput
   },
   methods: {
     async addUser() {
@@ -65,9 +64,5 @@ export default {
   }
 };
 </script>
-
 <style>
-.top {
-  margin-top: 80px;
-}
 </style>
