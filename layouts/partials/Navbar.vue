@@ -54,7 +54,7 @@
             </drop-down>
 
             <li class="nav-item" v-if="!loggedIn">
-                <nuxt-link class="nav-link btn btn-primary" :to="localePath('signup')">
+                <nuxt-link class="nav-link btn btn-primary" :to="localePath('login')">
                     <i class="now-ui-icons shopping_box"></i> {{ $t('auth.login') }}
                 </nuxt-link>
             </li>
@@ -64,6 +64,7 @@
                     <img :src="require(`~/../shared/flags/${lang.iso.split('-')[1]}.png`)" class="avatar" alt=""> {{lang.name}}
                 </nuxt-link>
             </drop-down>
+            <button type="primary" block @click="notifyVue('bottom','left')">Bottom Left</button>
 
         </template>
     </navbar>
@@ -93,6 +94,20 @@ export default {
   methods: {
     logout() {
       this.$auth.logout();
+    },
+    notifyVue(verticalAlign, horizontalAlign) {
+      this.$store.dispatch("notify", { msg: "algo" });
+      //   console.log("ashis");
+      //   var color = Math.floor(Math.random() * 4 + 1);
+      //   this.$notify({
+      //     message:
+      //       "Welcome to <b>Now Ui Dashboard Pro</b> - a beautiful freebie for every web developer",
+      //     timeout: 3000,
+      //     icon: "now-ui-icons ui-1_bell-53",
+      //     horizontalAlign: horizontalAlign,
+      //     verticalAlign: verticalAlign,
+      //     type: "info"
+      //   });
     }
   }
 };

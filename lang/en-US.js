@@ -17,8 +17,17 @@ export default {
 
   auth: {
     login: "Login",
+    register: "Register",
     profile: "Profile",
-    dashboard: "dashboard"
+    dashboard: "dashboard",
+    create: "Create Account",
+    start: "Get Started",
+    remember: "Remember Me",
+
+    email: "Email",
+    password: "Password",
+    firstName: "First Name",
+    lastName: "Last Name"
   },
 
   store: {
@@ -26,5 +35,9 @@ export default {
     women: "Women",
     categories: "Categories",
     men: "Men"
+  },
+
+  common: {
+    help: "Need Help?"
   }
 };

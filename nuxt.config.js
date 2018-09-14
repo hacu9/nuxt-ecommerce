@@ -37,7 +37,8 @@ module.exports = {
     "~plugins/globalDirectives.js",
     "~plugins/globalMixins.js",
     "~plugins/globalComponents.js",
-    { src: "~/plugins/now-ui-kit.js" }
+    { src: "~/plugins/now-ui-kit.js" },
+    { src: "~plugins/notify.js", ssr: false }
   ],
 
   build: {

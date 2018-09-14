@@ -5,14 +5,27 @@ const createStore = () => {
     state: {
       counter: 0,
       auth_message: "",
-      auth_type: ""
+      auth_type: "",
+
+      notify: false,
+      notifyType: "info",
+      notifyMsg: ""
     },
     mutations: {
       increment(state) {
         state.counter++;
       },
       AUTH_ERROR(message) {
-        this.state.auth_message = message;
+        state.auth_message = message;
+      },
+      start_notify(state, data) {
+        // console.log(data);
+        state.notify = true;
+        state.notifyMsg = data.msg;
+      },
+      start_notify(state, data) {
+        // console.log(data);
+        state.notify = false;
       }
     },
     getters: {
@@ -21,9 +34,6 @@ const createStore = () => {
       },
       user(state) {
         return state.auth.user;
-      },
-      userAvatar(state) {
-        // return `/public/avatars/avatar-${state.auth.user.id}.png`;
       }
     },
     actions: {
@@ -46,6 +56,12 @@ const createStore = () => {
             console.log(error);
             this.commit("AUTH_ERROR", error);
           });
+      },
+      notify({ commit, state }, payload) {
+        this.commit("start_notify", payload);
+      },
+      notified({ commit, state }, payload) {
+        this.commit("end_notify", payload);
       }
     }
   });

@@ -21,7 +21,13 @@ const User = {
         }
       },
 
-      transition: "el-fade-in-linear"
+      // transition: "el-fade-in-linear",
+      transition(to, from) {
+        if (!from) return "el-zoom-in-bottom";
+        return +to.query.page < +from.query.page
+          ? "el-zoom-in-top"
+          : "el-zoom-in-bottom";
+      }
     });
   }
 };
