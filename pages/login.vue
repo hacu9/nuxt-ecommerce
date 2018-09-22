@@ -5,22 +5,32 @@
         <div class="content">
             <div class="container">
                 <div class="col-md-5 ml-auto mr-auto">
+                    <form @submit.prevent="validateBeforeSubmit" novalidate>
                     <card type="login" plain>
                         <div slot="header" class="logo-container">
                             <img v-lazy="'img/now-logo.png'" alt="">
                         </div>
-
-                        <fg-input class="no-border input-lg" v-model="form.email" addon-left-icon="now-ui-icons users_circle-08" :placeholder="$t('auth.email')">
+                        
+                        <fg-input class="no-border input-lg " name="email" v-model="form.email" 
+                        addon-left-icon="now-ui-icons users_circle-08" 
+                        :placeholder="$t('auth.email')" 
+                        v-validate="'required|email'"
+                        :class="{'has-danger': errors.has('email') }">
                         </fg-input>
 
-                        <fg-input class="no-border input-lg" v-model="form.password" type="password" addon-left-icon="now-ui-icons text_caps-small" :placeholder="$t('auth.password')">
+                        <fg-input class="no-border input-lg" v-model="form.password" 
+                        type="password" addon-left-icon="now-ui-icons text_caps-small" 
+                        :placeholder="$t('auth.password')"
+                        name="password" v-validate="'required'"
+                        :class="{'has-danger': errors.has('password')}"
+                        >
                         </fg-input>
 
                         <n-checkbox inline v-model="form.remember_me">{{ $t('auth.remember') }}</n-checkbox>
 
                         <template slot="raw-content">
                             <div class="card-footer text-center">
-                                <button @click="login" class="btn btn-primary btn-round btn-lg btn-block">{{ $t('auth.start') }}</button>
+                                  <n-button type="primary" nativeType="submit" block round size="lg"> {{$t('auth.start')}}</n-button>
                             </div>
                             <div class="pull-left">
                                 <h6>
@@ -34,6 +44,7 @@
                             </div>
                         </template>
                     </card>
+                    </form>
                 </div>
             </div>
         </div>
@@ -65,12 +76,26 @@ export default {
   },
   methods: {
     async login() {
-      await this.$auth.login({
+      await  this.$auth.login({
         data: this.form
       });
-      this.$router.push({
-        path: "/"
-      });
+
+      this.notification(this.$t('auth.success'),'success','top','center')
+
+    //   this.$router.push({
+    //     path: "/"
+    //   });
+    },
+     validateBeforeSubmit() {
+      this.$validator.validateAll().then((validated) => {
+          console.log(validated)
+        if (validated) {
+          this.login()
+          return
+        }
+        var err = this.errors.all().join('<br>')
+        this.notification(err,'danger','top','center')
+      })
     }
   }
 };

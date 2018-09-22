@@ -5,7 +5,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: "nuxt-client",
+    title: "Big Store",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -37,22 +37,22 @@ module.exports = {
     "~plugins/globalDirectives.js",
     "~plugins/globalMixins.js",
     "~plugins/globalComponents.js",
-    { src: "~/plugins/now-ui-kit.js" },
-    { src: "~plugins/notify.js", ssr: false }
+    "~plugins/vvalidate.js",
+    { src: "~/plugins/now-ui-kit.js" }
   ],
 
   build: {
     /*
     ** Run ESLint on save
     */
-    vendor: ["jquery", "bootstrap"],
-    plugins: [
-      new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery",
-        "window.jQuery": "jquery"
-      })
-    ],
+    // vendor: ["jquery", "bootstrap"],
+    // plugins: [
+    //   new webpack.ProvidePlugin({
+    //     $: "jquery",
+    //     jQuery: "jquery",
+    //     "window.jQuery": "jquery"
+    //   })
+    // ],
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({

@@ -6,10 +6,7 @@ const createStore = () => {
       counter: 0,
       auth_message: "",
       auth_type: "",
-
-      notify: false,
-      notifyType: "info",
-      notifyMsg: ""
+      routes: []
     },
     mutations: {
       increment(state) {
@@ -18,14 +15,8 @@ const createStore = () => {
       AUTH_ERROR(message) {
         state.auth_message = message;
       },
-      start_notify(state, data) {
-        // console.log(data);
-        state.notify = true;
-        state.notifyMsg = data.msg;
-      },
-      start_notify(state, data) {
-        // console.log(data);
-        state.notify = false;
+      setUpRoutes(state,routes) {
+        state.routes = routes
       }
     },
     getters: {
@@ -34,7 +25,18 @@ const createStore = () => {
       },
       user(state) {
         return state.auth.user;
-      }
+      },
+      routes: (state) => (route) => {
+        if(!state.routes.hasOwnProperty(route)) return '404'
+
+        return state.routes[route][0]
+      },
+      // d (state){
+      //  return function(route){
+      //   return 'd'
+      //   }
+      // }
+      
     },
     actions: {
       signup({ commit, state }, payload) {
@@ -57,11 +59,10 @@ const createStore = () => {
             this.commit("AUTH_ERROR", error);
           });
       },
-      notify({ commit, state }, payload) {
-        this.commit("start_notify", payload);
-      },
-      notified({ commit, state }, payload) {
-        this.commit("end_notify", payload);
+      getRoutes({commit , state}, payload){
+        this.$axios.get('routes').then(x => {
+          this.commit("setUpRoutes", x.data);
+        })
       }
     }
   });

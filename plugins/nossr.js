@@ -1,7 +1,8 @@
-require("bootstrap");
-
 import Vue from "vue";
 import VueLazyload from "vue-lazyload";
+import Notifications from "@/components/NotificationPlugin";
+
+Vue.use(Notifications);
 
 Vue.use(VueLazyload, {
   // preLoad:1.3,

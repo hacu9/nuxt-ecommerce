@@ -36,8 +36,7 @@
 
             <drop-down tag="li" v-if="loggedIn" class="nav-item">
                 <template slot="title">
-                    <a class="dropdown-toggle nav-link" :class="{'no-caret': hideArrow}" data-toggle="dropdown">
-                        <i :class="icon"></i>
+                    <a class="dropdown-toggle nav-link"  data-toggle="dropdown">
                         <span class="no-icon"><img alt="Avatar" class="avatar img-raised" :src="require(`~/../shared/avatars/${user.avatar}`)"></span>
                     </a>
                 </template>
@@ -64,8 +63,6 @@
                     <img :src="require(`~/../shared/flags/${lang.iso.split('-')[1]}.png`)" class="avatar" alt=""> {{lang.name}}
                 </nuxt-link>
             </drop-down>
-            <button type="primary" block @click="notifyVue('bottom','left')">Bottom Left</button>
-
         </template>
     </navbar>
 </template>
@@ -95,20 +92,6 @@ export default {
     logout() {
       this.$auth.logout();
     },
-    notifyVue(verticalAlign, horizontalAlign) {
-      this.$store.dispatch("notify", { msg: "algo" });
-      //   console.log("ashis");
-      //   var color = Math.floor(Math.random() * 4 + 1);
-      //   this.$notify({
-      //     message:
-      //       "Welcome to <b>Now Ui Dashboard Pro</b> - a beautiful freebie for every web developer",
-      //     timeout: 3000,
-      //     icon: "now-ui-icons ui-1_bell-53",
-      //     horizontalAlign: horizontalAlign,
-      //     verticalAlign: verticalAlign,
-      //     type: "info"
-      //   });
-    }
   }
 };
 </script>

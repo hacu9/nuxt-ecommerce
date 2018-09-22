@@ -19,6 +19,8 @@ export default {
     login: "Login",
     register: "Register",
     profile: "Profile",
+    success: 'Login Success',
+    registerSuccess: 'Register Success',
     dashboard: "dashboard",
     create: "Create Account",
     start: "Get Started",
@@ -26,6 +28,7 @@ export default {
 
     email: "Email",
     password: "Password",
+    password_confirmation: "Password Confirmation",
     firstName: "First Name",
     lastName: "Last Name"
   },
