@@ -1,6 +1,7 @@
 const { I18N, baseURL, AUTH } = require("./plugins/config");
-const webpack = require("webpack");
-module.exports = {
+process.env.DEBUG = 'nuxt:*'
+export default  {
+  debug: true,
   /*
   ** Headers of the page
   */
@@ -38,29 +39,22 @@ module.exports = {
     "~plugins/globalMixins.js",
     "~plugins/globalComponents.js",
     "~plugins/vvalidate.js",
-    { src: "~/plugins/now-ui-kit.js" }
+    // "~/plugins/now-ui-kit.js" 
   ],
 
   build: {
     /*
-    ** Run ESLint on save
+    ** You can extend webpack config here
     */
-    // vendor: ["jquery", "bootstrap"],
-    // plugins: [
-    //   new webpack.ProvidePlugin({
-    //     $: "jquery",
-    //     jQuery: "jquery",
-    //     "window.jQuery": "jquery"
-    //   })
-    // ],
-    extend(config, { isDev, isClient }) {
-      if (isDev && isClient) {
+    extend(config, ctx) {
+      // Run ESLint on save
+      if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
-          enforce: "pre",
+          enforce: 'pre',
           test: /\.(js|vue)$/,
-          loader: "eslint-loader",
+          loader: 'eslint-loader',
           exclude: /(node_modules)/
-        });
+        })
       }
     }
   }

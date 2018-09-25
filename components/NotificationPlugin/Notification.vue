@@ -1,11 +1,12 @@
 <template>
-  <div @click="tryClose"
-       data-notify="container"
-       class="alert open"
-       :class="[{'alert-with-icon': icon}, verticalAlign, horizontalAlign, alertType]"
-       role="alert"
-       :style="customPosition"
-       data-notify-position="top-center">
+  <div 
+    :class="[{'alert-with-icon': icon}, verticalAlign, horizontalAlign, alertType]"
+    :style="customPosition"
+    data-notify="container"
+    class="alert open"
+    role="alert"
+    data-notify-position="top-center"
+    @click="tryClose">
     <button
       v-if="showClose"
       type="button"
@@ -13,20 +14,29 @@
       class="close col-xs-1"
       data-notify="dismiss"
       @click="close">
-      <i class="now-ui-icons ui-1_simple-remove"></i>
+      <i class="now-ui-icons ui-1_simple-remove"/>
     </button>
 
-    <span v-if="icon" data-notify="icon" :class="['alert-icon', icon]"></span>
+    <span 
+      v-if="icon" 
+      :class="['alert-icon', icon]" 
+      data-notify="icon"/>
     <span data-notify="message">
-      <span v-if="title" class="title"><b>{{title}}<br/></b></span>
-      <span v-if="message" v-html="message"></span>
-      <content-render v-if="!message && component" :component="component"></content-render>
+      <span 
+        v-if="title" 
+        class="title"><b>{{ title }}<br></b></span>
+      <span 
+        v-if="message" 
+        v-html="message"/>
+      <content-render 
+        v-if="!message && component" 
+        :component="component"/>
     </span>
   </div>
 </template>
 <script>
   export default {
-    name: 'notification',
+    name: 'Notification',
     components: {
       contentRender: {
         props: ['component'],
@@ -36,7 +46,10 @@
     props: {
       message: String,
       title: String,
-      icon: String,
+      icon: {
+        type:String,
+        default:'now-ui-icons ui-1_bell-53'
+      },
       verticalAlign: {
         type: String,
         default: 'top',
@@ -116,6 +129,12 @@
         return styles
       }
     },
+    mounted() {
+      this.elmHeight = this.$el.clientHeight
+      if (this.timeout) {
+        setTimeout(this.close, this.timeout)
+      }
+    },
     methods: {
       close() {
         this.$emit('close', this.timestamp)
@@ -127,12 +146,6 @@
         if (this.closeOnClick) {
           this.close()
         }
-      }
-    },
-    mounted() {
-      this.elmHeight = this.$el.clientHeight
-      if (this.timeout) {
-        setTimeout(this.close, this.timeout)
       }
     },
   }

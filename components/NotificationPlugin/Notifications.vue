@@ -1,14 +1,14 @@
 <template>
   <div class="notifications">
-    <transition-group :name="transitionName"
-                      :mode="transitionMode">
+    <transition-group 
+      :name="transitionName"
+      :mode="transitionMode">
       <notification
         v-for="notification in notifications"
         v-bind="notification"
-        :clickHandler="notification.onClick"
+        :click-handler="notification.onClick"
         :key="notification.timestamp.getTime()"
-        @close="removeNotification">
-      </notification>
+        @close="removeNotification"/>
     </transition-group>
   </div>
 </template>
@@ -38,19 +38,19 @@
         notifications: this.$notifications.state
       }
     },
-    methods: {
-      removeNotification(timestamp) {
-        this.$notifications.removeNotification(timestamp)
+    watch: {
+      overlap: function (newVal) {
+        this.$notifications.settings.overlap = newVal
       }
     },
     created() {
       this.$notifications.settings.overlap = this.overlap
     },
-    watch: {
-      overlap: function (newVal) {
-        this.$notifications.settings.overlap = newVal
+    methods: {
+      removeNotification(timestamp) {
+        this.$notifications.removeNotification(timestamp)
       }
-    }
+    },
 
   }
 </script>

@@ -30,6 +30,7 @@ const AUTH = {
 
 const I18N = {
   defaultLocale: "en",
+  seo:false, //nuxt-v2 bug workaround
   locales: [
     {
       code: "es",

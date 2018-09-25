@@ -1,11 +1,13 @@
 <template>
   <div>
-    <Navbar :transparent="false" :color-on-scroll="250" />
+    <Navbar 
+      :transparent="false" 
+      :color-on-scroll="250" />
     <no-ssr>
-      <notifications></notifications>
+      <notifications/>
     </no-ssr>
 
-    <nuxt  class="wrapper" />
+    <nuxt class="wrapper" />
     <Footer :backgroundColor="'black'" />
   </div>
 </template>
@@ -13,19 +15,19 @@
 import Navbar from "./partials/Navbar";
 import Footer from "./partials/Footer";
 export default {
-  name: "default",
+  name: "Default",
   components: {
     Navbar,
-    Footer,
+    Footer
   },
-  created(){
-    // global
-      this.$store.dispatch('getRoutes')
-      //localization 
-      this.localize(this.$i18n.locale);
-     this.$i18n.beforeLanguageSwitch = (oldLocale, newLocale) => {
-       this.localize(newLocale)
-    }
+  created() {
+    // global routes
+    this.$store.dispatch("getRoutes");
+    //localization
+    this.localize(this.$i18n.locale);
+    this.$i18n.beforeLanguageSwitch = (oldLocale, newLocale) => {
+      this.localize(newLocale);
+    };
   }
 };
 </script>

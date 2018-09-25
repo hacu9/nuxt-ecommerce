@@ -8,7 +8,10 @@
             <h2 class="title">Sections you will love</h2>
             <h5 class="description"> Build pages in no time using pre-made sections! From headers to footers, you will be able to choose the best combination for your project. We have created multiple sections for you to put together and customise into pixel perfect example pages.
             </h5>
-            <a href="sections.html" target="_blank" class="btn btn-primary btn-round">View All Sections</a>
+            <a 
+              href="sections.html" 
+              target="_blank" 
+              class="btn btn-primary btn-round">View All Sections</a>
           </div>
         </div>
       </div>
