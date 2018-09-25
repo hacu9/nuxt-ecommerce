@@ -2,7 +2,7 @@ import Vue from "vue";
 import { mapGetters } from "vuex";
 import { Validator } from "vee-validate";
 
-const User = {
+const globals = {
   install(Vue, Options) {
     Vue.mixin({
       computed: {
@@ -32,21 +32,6 @@ const User = {
             Validator.localize(localeName, locale);
           })
         },
-        //////////notifications
-        notification( notifyMsg, type = "info",
-         verticalAlign = 'bottom', horizontalAlign = 'right',
-         time = 5000,
-         icon = "ui-1_bell-53") {
-          this.$notify({
-            message: notifyMsg,
-            timeout: time,
-            icon: "now-ui-icons " + icon,
-            horizontalAlign: horizontalAlign,
-            verticalAlign: verticalAlign,
-            type: type
-          });
-          // this.$store.dispatch("notified");
-        }
       },
       // transition: "el-fade-in-linear",
       transition(to, from) {
@@ -59,4 +44,4 @@ const User = {
   }
 };
 
-Vue.use(User);
+Vue.use(globals);
